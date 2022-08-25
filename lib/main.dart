@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_sample_app/MyHomeScreen.dart';
+
+import 'ToDo.dart';
+
+class ToDo {
+  final String title;
+  final String description;
+
+  ToDo(this.title, this.description);
+}
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  String myMessage = "Hello All";
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Flutter Sample App',
+        /*title: 'My Flutter Sample App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
@@ -26,7 +35,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomeScreen(),
-    );
+      home: const MyHomeScreen(),*/
+        /*initialRoute: "/",
+      routes: {
+        "/": (context) => HomePage(),
+        "/second": (context) => SecondScreen(this.myMessage)
+      },*/
+        home: ToDoScreen(
+            listTodo: List.generate(
+                20, (index) => ToDo('Todo $index', 'description $index'))));
   }
 }
